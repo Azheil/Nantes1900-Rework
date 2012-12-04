@@ -1,0 +1,3 @@
+# Ignorer le fichier de connexion à la bdd (propre à chaque install)
+application/config/constants.php
+application/config/database.php

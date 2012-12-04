@@ -13,16 +13,16 @@ class Accueil extends CI_Controller
 		parent::__construct();
 
 		//Ce code sera executé charque fois que ce contrôleur sera appelé
-
-		$this->load->view('accueil/header');
-		$this->load->view('accueil/body');
-		$this->load->view('footer');
+		
+		$this->load->view('header');
 	}
 
 	public function accueil()
 	{
-		
+		$this->load->view('accueil/body');
+		$this->load->view('footer');
 	}
+
 }
 
 /* End of file accueil.php */

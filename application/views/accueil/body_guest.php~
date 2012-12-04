@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" > 
+<body>
+
+	<h1> Bienvenue sur le site </h1>
+	
+	<section1>Le site est actuellement en d&eacute;veloppement</section1>
+
+	<section2>	
+		<form method="post" action="">
+			<label for="id">ID : </label>
+			<input type="text" name="id" value="" />
+	
+			<input type="submit" value="Envoyer" />
+		</form>
+	</section2>
+
+
+</body>
+</html>

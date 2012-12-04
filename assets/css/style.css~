@@ -20,6 +20,15 @@ html{
 
 /* Styles globaux*/
 
+body{
+	width: 900px;
+	font-family:Verdana;
+	background: center;
+	background-repeat: repeat;
+	background-position: 0 0;
+	text-align:left;	
+}
+
 h1{
 	color:#9e5555;	
 	text-align: left;
@@ -80,4 +89,12 @@ p{
 }
 
 
+/* nav */
 
+#nav{
+	
+}
+
+.menu{
+	
+}
