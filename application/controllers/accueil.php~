@@ -19,29 +19,9 @@ class Accueil extends CI_Controller
 
 	public function accueil()
 	{
+		$this->load->library('form_validation')
 		$this->load->view('accueil/body');
 		$this->load->view('footer');
-	}
-
-	public function check_login($username,$password)
-	{
-
-		$this->load->model('login_model', 'login');
-	
-		$this->load->helper(array('form', 'url'));
-
-		$this->load->library('form_validation');
-
-		if ($this->form_validation->run() == FALSE)
-		{
-			$this->load->view('accueil/body');
-		}
-		else
-		{
-			$this->load->view('accueil/succes_login');
-		}
-		
-		
 	}
 
 }

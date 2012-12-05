@@ -19,6 +19,7 @@ class Accueil extends CI_Controller
 
 	public function accueil()
 	{
+		$this->load->library('form_validation');
 		$this->load->view('accueil/body');
 		$this->load->view('footer');
 	}
