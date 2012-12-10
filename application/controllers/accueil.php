@@ -19,11 +19,31 @@ class Accueil extends CI_Controller
 
 	public function accueil()
 	{
+
 		$this->load->library('form_validation');
 		$this->load->view('accueil/body');
-		$this->load->view('footer');
+
+		if ( ! $this->session->userdata('username') )
+		{
+			$this->load->view('accueil/formulaire_login');
+		}
+		else
+		{
+
+			$data = array('username' => $this->session->userdata('username'));
+
+			$this->load->view('accueil/welcome', $data);
+			$this->load->view('footer');
+		}
+
 	}
 
+	public function signin()
+	{
+		$this->load->library('form_validation');
+		$this->load->view('accueil/formulaire_signin');
+		$this->load->view('footer');
+	}
 }
 
 /* End of file accueil.php */

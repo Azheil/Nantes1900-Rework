@@ -2,13 +2,19 @@
 
 class Login_model extends CI_Model
 {
-	
-	public function check_login_info($username,$submitted_password)
+	public function __construct()
 	{
-		
+		parent::__construct();
+
 		//Connexion à la base de données
 		$this->load->database();
 
+	}
+
+
+	public function check_login_info($username,$submitted_password)
+	{
+		
 		//Chargement de la gestion de hashage de mot de passe
 		$this->load->helper('security');
 

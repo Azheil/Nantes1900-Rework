@@ -3,7 +3,5 @@
 
 <h3>Bienvenue <?php echo $username; ?></h3>
 
-<p><?php echo anchor('accueil', 'Accueil'); ?></p>
-
 </body>
 </html>

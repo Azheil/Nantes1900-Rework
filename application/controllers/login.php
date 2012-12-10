@@ -13,7 +13,7 @@ class Login extends CI_Controller {
 
 		//Ce code sera executé charque fois que ce contrôleur sera appelé
 		
-		$this->load->model('login_model', 'login');
+		$this->load->model('login_model');
 		$this->load->library('form_validation');
 		$this->load->helper(array('form'));
 		$this->load->view('header');
@@ -32,19 +32,39 @@ class Login extends CI_Controller {
 		}
 		else
 		{
-			$check_login = $this->login->check_login_info($this->input->post('username'),$this->input->post('password'));
+			$check_login = $this->login_model->check_login_info($this->input->post('username'),$this->input->post('password'));
 
 			if ( ! $check_login )
 			{
-			$this->load->view('accueil/fail_login');
+				$this->load->view('accueil/fail_login');
 			}
 			else
 			{
-			$this->load->view('accueil/success_login', $check_login);
+		
+				$this->login($check_login);
+				
 			}
 		}
 
 	}
+
+	public function login($check_login)
+	{
+
+		$this->session->set_userdata('username', $check_login['username']);
+		$this->session->set_userdata('user_level', $check_login['user_level']);
+		$this->load->view('accueil/success_login', $check_login);
+
+	}
+
+	public function logout()
+	{
+
+		$this->session->sess_destroy();
+		$this->load->view('accueil/success_logout');
+
+	}
+
 }
 
 /* End of file login.php */

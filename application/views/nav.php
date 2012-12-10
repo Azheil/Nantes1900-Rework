@@ -1,9 +1,0 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" > 
-<nav>
-<div id="nav">
-
-	<div class="menu"><?php echo url('Accueil', 'accueil'); ?></div>
-
-</div>
-</nav>
-</html>

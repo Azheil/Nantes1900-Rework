@@ -2,13 +2,19 @@
 
 class Login_model extends CI_Model
 {
-	
-	public function check_login_info($username,$submitted_password)
+	public function __construct()
 	{
-		
+		parent::__construct();
+
 		//Connexion à la base de données
 		$this->load->database();
 
+	}
+
+
+	public function check_login_info($username,$submitted_password)
+	{
+		
 		//Chargement de la gestion de hashage de mot de passe
 		$this->load->helper('security');
 
@@ -21,7 +27,7 @@ class Login_model extends CI_Model
 		$result = $query->result_array(); //Récupération des résultats
 		$stored_password = $result['0']['password']; //On isole le mot de passe
 
-		if (do_hash($submitted_password) != $stored_password;)
+		if (do_hash($submitted_password) != $stored_password)
 		{
 			return false;
 		}
