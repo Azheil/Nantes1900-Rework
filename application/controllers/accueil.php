@@ -25,7 +25,7 @@ class Accueil extends CI_Controller
 
 		if ( ! $this->session->userdata('username') )
 		{
-			$this->load->view('accueil/formulaire_login');
+			$this->load->view('accueil/login/formulaire_login');
 		}
 		else
 		{
@@ -41,7 +41,7 @@ class Accueil extends CI_Controller
 	public function signin()
 	{
 		$this->load->library('form_validation');
-		$this->load->view('accueil/formulaire_signin');
+		$this->load->view('accueil/signin/formulaire_signin');
 		$this->load->view('footer');
 	}
 }

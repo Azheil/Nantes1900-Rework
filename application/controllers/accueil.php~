@@ -42,6 +42,7 @@ class Accueil extends CI_Controller
 	{
 		$this->load->library('form_validation');
 		$this->load->view('accueil/formulaire_signin');
+		$this->load->view('footer');
 	}
 }
 

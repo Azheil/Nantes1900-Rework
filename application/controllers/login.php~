@@ -1,6 +1,6 @@
 <?php
 
-class Login extends CI_Controller {
+class Connexion extends CI_Controller {
 
 	public function index()
 	{
@@ -36,7 +36,7 @@ class Login extends CI_Controller {
 
 			if ( ! $check_login )
 			{
-				$this->load->view('accueil/fail_login');
+				$this->load->view('accueil/login/fail_login');
 			}
 			else
 			{
@@ -53,7 +53,7 @@ class Login extends CI_Controller {
 
 		$this->session->set_userdata('username', $check_login['username']);
 		$this->session->set_userdata('user_level', $check_login['user_level']);
-		$this->load->view('accueil/success_login', $check_login);
+		$this->load->view('accueil/login/success_login', $check_login);
 
 	}
 
@@ -61,9 +61,10 @@ class Login extends CI_Controller {
 	{
 
 		$this->session->sess_destroy();
-		$this->load->view('accueil/success_logout');
+		$this->load->view('accueil/login/success_logout');
 
 	}
+
 
 }
 
