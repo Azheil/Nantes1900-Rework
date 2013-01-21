@@ -22,22 +22,11 @@ class Signin extends CI_Controller {
 	public function check_signin()
 	{
 		
-		$this->form_validation->set_rules('password1', 'Password1', 'required');
-		$this->form_validation->set_rules('password2', 'Password2', 'required');
-		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[12]|xss_clean');
-		$this->form_validation->set_rules('nom', 'Nom', 'trim|required|min_length[5]|max_length[12]|xss_clean');
-		$this->form_validation->set_rules('prenom', 'Prenom', 'trim|required|min_length[5]|max_length[12]|xss_clean');
-
-		if (($this->form_validation->run() == FALSE) || ($this->input->post('password1') != $this->input->post('password2')))
+		if (($this->form_validation->run('signin') == FALSE)) //TODO : Rajouter dans la validation si le nom d'utilisateur existe déjà ou pas
 		{
-			$this->load->view('accueil/signin/error_formulaire_signin');
+                        $this->load->view('accueil/signin/formulaire_signin');
 			$this->load->view('footer');
-		}
-		else if ($this->signin->check_ifuserexists($this->input->post('username')) == 1)
-		{
-			$this->load->view('accueil/signin/username_already_exists');
-			$this->load->view('footer');
-		}
+                }
 		else
 		{
 			$userdata = array();
@@ -49,7 +38,8 @@ class Signin extends CI_Controller {
 			$this->signin->create_user($userdata);
 
 			//TO DO : Rajouter une connexion automatique après l'inscription
-			
+			$this->load->view('accueil/signin/auto_login');
+                        $this->load->view('footer');
 			
 		}
 	}

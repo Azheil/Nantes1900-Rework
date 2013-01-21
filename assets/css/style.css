@@ -67,6 +67,11 @@ error{
 
 }
 
+.error_form{
+        color:#FF0000;
+    font-size: 8px;
+}
+
 #image{
   max-width:70%;
   border: none;
