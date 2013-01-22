@@ -26,6 +26,18 @@ $config = array(
                         'label'=>'Prenom',
                         'rules'=>'trim|required|min_length[5]|max_length[12]|xss_clean'
                     )
+                ),
+    'login' => array(
+                    array(
+                        'field'=>'username',
+                        'label'=>'Username',
+                        'rules'=>'trim|required|min_length[5]|max_length[12]|xss_clean'
+                    ),
+                    array(
+                        'field'=>'password',
+                        'label'=>'Password',
+                        'rules'=>'required|callback_check_login_info'
+                    )
                 )
 );
 

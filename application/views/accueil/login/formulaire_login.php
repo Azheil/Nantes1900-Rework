@@ -1,19 +1,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
 
-	<?php echo validation_errors(); ?>
-
+    <table>
 	<?php echo form_open('login'); ?>
 
-	<h5>Nom d'utilisateur:</h5>
-	<input type="text" name="username" value="" size="50" />
-
-	<h5>Mot de passe :</h5>
-	<input type="password" name="password" value="" size="50" />
-
-	<div><input type="submit" value="Connexion" /></div>
+	<tr><td>Nom d'utilisateur:</td></tr>
+        <tr>
+            <td><input type="text" name="username" value="<?php echo set_value('username'); ?>" size="50" /></td>
+            <td class="error_form"><?php echo form_error('username'); ?></td>
+        </tr>
+	<tr><td>Mot de passe :</td></tr>
+        <tr>
+            <td><input type="password" name="password" value="" size="50" /></td>
+            <td class="error_form"><?php echo form_error('password'); ?></td>
+        </tr>
+	<tr><td><input type="submit" value="Connexion" /></td></tr>
 
 	</form>
-
+    </table>
 	<p><?php echo anchor('accueil/signin', 'Nouveau sur le site ? Cliquez-ici pour vous inscrire'); ?></p>
 
 </html>

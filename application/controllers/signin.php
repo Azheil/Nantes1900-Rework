@@ -13,7 +13,7 @@ class Signin extends CI_Controller {
 
 		//Ce code sera executé charque fois que ce contrôleur sera appelé
 		
-		$this->load->model('signin_model','signin');
+		$this->load->model('user_model','signin');
 		$this->load->library('form_validation');
 		$this->load->helper(array('form'));
 		$this->load->view('header');

@@ -13,7 +13,6 @@ class Login extends CI_Controller {
 
 		//Ce code sera executé charque fois que ce contrôleur sera appelé
 		
-		$this->load->model('login_model');
 		$this->load->library('form_validation');
 		$this->load->helper(array('form'));
 		$this->load->view('header');
@@ -21,47 +20,64 @@ class Login extends CI_Controller {
 	
 	public function check_login()
 	{
-
-		$this->form_validation->set_rules('password', 'Password', 'required');
-		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[12]|xss_clean');
-
-		if ($this->form_validation->run() == FALSE)
+            
+		if ($this->form_validation->run('login') == FALSE)
 		{
-			$this->load->view('accueil/body');
-			$this->load->view('footer');
+                    $this->load->view('accueil/body');
+                    $this->load->view('accueil/login/formulaire_login');
+                    $this->load->view('footer');
 		}
 		else
 		{
-			$check_login = $this->login_model->check_login_info($this->input->post('username'),$this->input->post('password'));
-
-			if ( ! $check_login )
-			{
-				$this->load->view('accueil/login/fail_login');
-			}
-			else
-			{
-		
-				$this->login($check_login);
-				
-			}
+                    //La connexion ayant été jugée légitime, on va maintenant la créer
+                    $this->login($this->input->post('username'));
 		}
 
 	}
+        
+        public function check_login_info()
+        {
+            
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
+            
+            $this->load->model('user_model','login');
+            
+            $check = $this->login->check_login_info($username,$password);
 
-	public function login($check_login)
+            if ( $check['0'] )
+            {
+                return $check['0'];
+            }
+            elseif ( $check['1'] == 'username')
+            {
+                $this->form_validation->set_message('check_login_info', 'Utilisateur inexistant');
+                return FALSE;
+            }
+            elseif ( $check['1'] == 'password')
+            {
+                $this->form_validation->set_message('check_login_info', 'Mot de passe invalide');
+                return FALSE;
+            }
+        }
+
+	private function login($username)
 	{
-
-		$this->session->set_userdata('username', $check_login['username']);
-		$this->session->set_userdata('user_level', $check_login['user_level']);
-		$this->load->view('accueil/login/success_login', $check_login);
+            
+            $data = array('username' => $username,
+                          'user_level' => $this->login->get_user_level($username));
+            
+            $this->session->set_userdata('username', $data['username']);
+            $this->session->set_userdata('user_level', $data['user_level']);
+            $this->load->view('accueil/login/success_login', $data);
 
 	}
 
 	public function logout()
 	{
 
-		$this->session->sess_destroy();
-		$this->load->view('accueil/login/success_logout');
+            $this->session->sess_destroy();
+            $this->load->view('accueil/login/success_logout');
 
 	}
 
