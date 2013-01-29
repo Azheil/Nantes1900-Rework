@@ -23,16 +23,23 @@ class Accueil extends CI_Controller
 		$this->load->library('form_validation');
 		$this->load->view('accueil/body');
 
-		if ( ! $this->session->userdata('username') )
+		if ( ! $this->session->userdata('username') ) //Si l'utilisateur n'est pas loggé, on affiche le formulaire de connexion
 		{
 			$this->load->view('accueil/login/formulaire_login');
 		}
-		else
+		else //Sinon, on affiche les zones restreintes
 		{
 
 			$data = array('username' => $this->session->userdata('username'));
 
 			$this->load->view('accueil/welcome', $data);
+                        
+                        if ( $this->session->userdata('user_level') == 5)
+                        {
+                            $this->load->view('accueil/data_center_anchor');
+                        }
+                        
+                        
 			$this->load->view('footer');
 		}
 

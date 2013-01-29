@@ -22,7 +22,7 @@ class Signin extends CI_Controller {
 	public function check_signin()
 	{
 		
-		if (($this->form_validation->run('signin') == FALSE)) //TODO : Rajouter dans la validation si le nom d'utilisateur existe déjà ou pas
+		if ($this->form_validation->run('signin') == FALSE) //TODO : Rajouter dans la validation si le nom d'utilisateur existe déjà ou pas
 		{
                         $this->load->view('accueil/signin/formulaire_signin');
 			$this->load->view('footer');
@@ -35,7 +35,7 @@ class Signin extends CI_Controller {
 			$userdata['nom'] = $this->input->post('nom');
 			$userdata['prenom'] = $this->input->post('prenom');			
 
-			$this->signin->create_user($userdata);
+			$this->signin->create_user($userdata); //Transmission des données au modèle user_model
 
 			//TO DO : Rajouter une connexion automatique après l'inscription
 			$this->load->view('accueil/signin/auto_login');

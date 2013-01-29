@@ -59,10 +59,10 @@ class User_model extends CI_Model
 		$this->db->set('username', $userdata['username']);
 		$this->db->set('password', do_hash($userdata['password']));
 		$this->db->set('user_level', 1); //Par défaut, l'utilisateur possède les droits les plus bas
-		$this->db->set('timestamp', now()); //TO DO : Ajouter la véritable date d'inscription
-		$this->db->set('nom', $userdata['nom']); //TO DO : Ajouter le champ "nom" dans le formulaire
-		$this->db->set('prenom', $userdata['prenom']); //TO DO : Ajouter le champ "prenom" dans le formulaire
-		$this->db->insert('users');
+		$this->db->set('timestamp', now());
+		$this->db->set('nom', $userdata['nom']);
+		$this->db->set('prenom', $userdata['prenom']);
+		$this->db->insert('users'); //Exécution
 
 
 	}
