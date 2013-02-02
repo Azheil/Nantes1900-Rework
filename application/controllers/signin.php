@@ -37,9 +37,7 @@ class Signin extends CI_Controller {
 
 			$this->signin->create_user($userdata); //Transmission des données au modèle user_model
 
-			//TO DO : Rajouter une connexion automatique après l'inscription
-			$this->load->view('accueil/signin/auto_login');
-                        $this->load->view('footer');
+			redirect('accueil/','refresh');
 			
 		}
 	}

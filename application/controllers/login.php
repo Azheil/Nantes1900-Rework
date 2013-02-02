@@ -70,6 +70,7 @@ class Login extends CI_Controller {
             $this->session->set_userdata('username', $data['username']);
             $this->session->set_userdata('user_level', $data['user_level']);
             $this->load->view('accueil/login/success_login', $data);
+            redirect('accueil/','refresh');
 
 	}
 
@@ -77,7 +78,8 @@ class Login extends CI_Controller {
 	{
 
             $this->session->sess_destroy();
-            $this->load->view('accueil/login/success_logout');
+            $this->load->view('accueil/login/success_logout');            
+            redirect('accueil/','refresh');
 
 	}
 

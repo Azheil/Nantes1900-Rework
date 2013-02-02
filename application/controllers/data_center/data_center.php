@@ -25,4 +25,6 @@ class Data_center extends CI_Controller
         
         
 }
-?>
+
+/* End of file data_center.php */
+/* Location: ./application/controllers/data_center/data_center.php */

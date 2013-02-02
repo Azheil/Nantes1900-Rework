@@ -40,6 +40,8 @@ class Ajout_objet extends CI_Controller
                 $objetdata['username'] = $this->session->userdata('username');
                 
                 $this->add_data->ajout_objet($objetdata);
+                
+                //TODO: Ajouter une page de confirmation du succès d'ajout de l'objet, puis rediriger vers le data_center
             }
          
             
@@ -47,4 +49,6 @@ class Ajout_objet extends CI_Controller
         
         
 }
-?>
+
+/* End of file ajout_objet.php */
+/* Location : ./application/controllers/data_center/ajout_objet.php */
