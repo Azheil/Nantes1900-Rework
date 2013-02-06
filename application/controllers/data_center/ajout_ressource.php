@@ -16,8 +16,9 @@ class Ajout_ressource extends CI_Controller
             
             $this->load->model('data_process_model','add_data');
             $this->load->library('form_validation');
-            $this->load->helper(array('form'));
-            $this->load->view('header');
+            $this->load->helper(array('form','dates'));
+            $this->load->view('header');            
+            $this->load->view('data_center/data_center');
 	}
         
         public function choix_ressource()
@@ -57,50 +58,16 @@ class Ajout_ressource extends CI_Controller
                 $textedata['sous_categorie'] = $this->input->post('sous_categorie');
                 $textedata['mots_cles'] = $this->input->post('mots_cles');
                 $textedata['username'] = $this->session->userdata('username');
+                                
+                $date_infos = conc_date($this->input->post('jour'),$this->input->post('mois'),$this->input->post('annee'));
+                                
+                $textedata['date'] = $date_infos['date'];
+                $textedata['date_precision'] = $date_infos['date_precision'];
+                    
+                $this->add_data->ajout_texte($textedata);            
+                redirect('data_center/data_center/','refresh');
                 
-                //Calcul automatique du jour
-                if( ! $this->input->post('jour') )
-                {
-                    $jour = '01';
-                }
-                else
-                {
-                    $jour = $this->input->post('jour');
-                }
-                
-                //Calcul automatique du mois
-                if( ! $this->input->post('mois') )
-                {
-                    $mois = '01';
-                }
-                else
-                {
-                    $mois = $this->input->post('mois');
-                }
-                
-                //On concaténe la date complète
-                $textedata['date'] = $jour."/".$mois."/".$this->input->post('annee');
-                
-                //Calcul automatique de la précision de la date
-                if( ! $this->input->post('jour') )
-                {
-                    if( ! $this->input->post('mois') )
-                    {
-                        $textedata['date_precision'] = 'Année';
-                    }
-                    else
-                    {
-                        $textedata['date_precision'] = 'Mois';
-                    }
-                }
-                else
-                {
-                    $textedata['date_precision'] = 'Jour';
-                }
-                
-                $this->add_data->ajout_texte($textedata);
-                
-                //TODO: Ajouter une page de confirmation du succès d'ajout de la ressource, puis rediriger vers le data_center
+                //TODO: Ajouter une page de confirmation du succès d'ajout de l'objet
             }
          
             

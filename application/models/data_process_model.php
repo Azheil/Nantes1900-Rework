@@ -40,8 +40,37 @@ class Data_process_model extends CI_Model
             $this->db->set('mots_cles', $textedata['mots_cles']);
             $this->db->set('date_debut_ressource', $textedata['date']);
             $this->db->set('date_precision', $textedata['date_precision']);
-            $this->db->insert('ressource_textuelle'); //Exécution
-            
+            $this->db->insert('ressource_textuelle'); //Exécution            
+        }
+        
+        public function ajout_relation($relationdata)
+        {
+            //Création de la requête
+            $this->db->set('username', $relationdata['username']);
+            $this->db->set('objet_id_1', $relationdata['objet_id_1']);
+            $this->db->set('objet_id_2', $relationdata['objet_id_2']);
+            $this->db->set('datation_indication_debut', $relationdata['datation_indication_debut']);
+            $this->db->set('datation_indication_fin', $relationdata['datation_indication_fin']);
+            $this->db->set('date_debut_relation', $relationdata['date_debut_relation']);
+            $this->db->set('date_fin_relation', $relationdata['date_fin_relation']);
+            $this->db->set('date_precision', $relationdata['date_precision']);            
+            $this->db->set('parent', $relationdata['parent']);
+            $this->db->set('type_relation_id', $relationdata['type_relation_id']);
+            $this->db->insert('relation'); //Exécution            
+        }
+        
+        public function get_objet_list()
+        {
+            $this->db->select('objet_id, nom_objet');
+            $query = $this->db->get('objet');
+            return $query->result_array();
+        }
+        
+        public function get_type_relation_list()
+        {
+            $this->db->select('type_relation_id, type_relation');
+            $query = $this->db->get('type_relation');
+            return $query->result_array();
         }
 }
 

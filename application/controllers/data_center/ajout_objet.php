@@ -17,7 +17,8 @@ class Ajout_objet extends CI_Controller
             $this->load->model('data_process_model','add_data');
             $this->load->library('form_validation');
             $this->load->helper(array('form'));
-            $this->load->view('header');
+            $this->load->view('header');            
+            $this->load->view('data_center/data_center');
 	}
         
         public function formulaire()
@@ -39,9 +40,10 @@ class Ajout_objet extends CI_Controller
                 $objetdata['mots_cles'] = $this->input->post('mots_cles');
                 $objetdata['username'] = $this->session->userdata('username');
                 
-                $this->add_data->ajout_objet($objetdata);
+                $this->add_data->ajout_objet($objetdata);            
+                redirect('data_center/data_center/','refresh');
                 
-                //TODO: Ajouter une page de confirmation du succès d'ajout de l'objet, puis rediriger vers le data_center
+                //TODO: Ajouter une page de confirmation du succès d'ajout de l'objet
             }
          
             

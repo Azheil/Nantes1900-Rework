@@ -41,6 +41,10 @@
                     <td> <input type="text" name=ville_edition value="<?php echo set_value('ville_edition'); ?>" size="30"></textarea> </td>
                     <td class="error_form"><?php echo form_error('ville_edition'); ?></td>
             </tr>
+            
+        </table>
+        <table>
+        
             <tr>
                     <td> Date d'édition </td>
             </tr>
@@ -57,6 +61,10 @@
                 <td class="error_form"><?php echo form_error('mois'); ?></td>
                 <td class="error_form"><?php echo form_error('annee'); ?></td>
             </tr>
+         
+        </table>    
+        <table>
+            
             <tr>
                     <td> Mots-clés </td>
                     <td> <textarea name=mots_cles value="<?php echo set_value('mots_cles'); ?>" rows="2" cols="75"></textarea> </td>

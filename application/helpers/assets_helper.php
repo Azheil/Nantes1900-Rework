@@ -32,3 +32,5 @@ if ( ! function_exists('img'))
 	}
 }
 
+/* End of file assets_helper.php */
+/* Location : ./application/helpers/assets_helper.php */
