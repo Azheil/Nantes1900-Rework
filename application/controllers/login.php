@@ -24,7 +24,7 @@ class Login extends CI_Controller {
 		if ($this->form_validation->run('login') == FALSE)
 		{
                     $this->load->view('accueil/body');
-                    $this->load->view('accueil/login/formulaire_login');
+                    $this->load->view('accueil/login/formulaire_login',array('titre'=>'Connectez-vous :'));
                     $this->load->view('footer');
 		}
 		else

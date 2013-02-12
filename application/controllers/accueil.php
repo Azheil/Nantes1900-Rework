@@ -25,7 +25,7 @@ class Accueil extends CI_Controller
 
 		if ( ! $this->session->userdata('username') ) //Si l'utilisateur n'est pas loggé, on affiche le formulaire de connexion
 		{
-			$this->load->view('accueil/login/formulaire_login');
+			$this->load->view('accueil/login/formulaire_login',array('titre'=>'Connectez-vous :'));
 		}
 		else //Sinon, on affiche les zones restreintes
 		{

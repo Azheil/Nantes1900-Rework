@@ -1,6 +1,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
 
     <table>
+        
+        <h1><?php echo $titre; ?></h1>
+        
 	<?php echo form_open('login'); ?>
 
 	<tr><td>Nom d'utilisateur:</td></tr>

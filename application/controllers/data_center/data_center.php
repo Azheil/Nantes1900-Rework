@@ -5,7 +5,7 @@ class Data_center extends CI_Controller
 
 	public function index()
 	{
-            $this->accueil();
+            $this->data_center();
 	}
 
 	public function __construct()
@@ -18,9 +18,17 @@ class Data_center extends CI_Controller
             $this->load->view('header');
 	}
         
-        public function accueil()
+        public function data_center()
         {
-            $this->load->view('data_center/data_center');
+            if ( $this->session->userdata('user_level') == 5)
+            {
+                $this->load->view('data_center/data_center');
+            }
+            else if ( !$this->session->userdata('username') )
+            {
+                $this->load->view('accueil/login/formulaire_login',array('titre'=>'Vous n\'êtes pas connecté. Veuillez vous connecter :'));
+            }
+            
         }
         
         

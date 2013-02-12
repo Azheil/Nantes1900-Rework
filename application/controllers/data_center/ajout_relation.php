@@ -14,7 +14,8 @@ class Ajout_relation extends CI_Controller
 
             //Ce code sera executé charque fois que ce contrôleur sera appelé
             
-            $this->load->model('data_process_model','process_data');
+            $this->load->model('relation_model','relation');
+            $this->load->model('objet_model','objet');
             $this->load->library('form_validation');
             $this->load->helper(array('form','dates'));
             $this->load->view('header');
@@ -25,10 +26,10 @@ class Ajout_relation extends CI_Controller
         {
             
             //On va récupérer une liste des objets existants dans la base, afin de les proposer
-            $objet_list = $this->process_data->get_objet_list();
+            $objet_list = $this->objet->get_objet_list();
             
             //On va récupérer une liste des types de relation existants dans la base, afin de les proposer
-            $type_relation_list = $this->process_data->get_type_relation_list();
+            $type_relation_list = $this->relation->get_type_relation_list();
             
             if ($this->form_validation->run('ajout_relation') == FALSE)
             {
@@ -55,7 +56,7 @@ class Ajout_relation extends CI_Controller
                 
                 $relationdata['parent'] = $this->input->post('parent')? 'true':'false';
                              
-                $this->process_data->ajout_relation($relationdata);            
+                $this->relation->ajout_relation($relationdata);            
                 redirect('data_center/data_center/','refresh');
                 
                 //TODO: Ajouter une page de confirmation du succès d'ajout de l'objet

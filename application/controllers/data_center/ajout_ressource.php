@@ -14,7 +14,7 @@ class Ajout_ressource extends CI_Controller
 
             //Ce code sera executé charque fois que ce contrôleur sera appelé
             
-            $this->load->model('data_process_model','add_data');
+            $this->load->model('ressource_texte_model','ressource_texte');
             $this->load->library('form_validation');
             $this->load->helper(array('form','dates'));
             $this->load->view('header');            
@@ -64,7 +64,7 @@ class Ajout_ressource extends CI_Controller
                 $textedata['date'] = $date_infos['date'];
                 $textedata['date_precision'] = $date_infos['date_precision'];
                     
-                $this->add_data->ajout_texte($textedata);            
+                $this->ressource_texte->ajout_texte($textedata);            
                 redirect('data_center/data_center/','refresh');
                 
                 //TODO: Ajouter une page de confirmation du succès d'ajout de l'objet

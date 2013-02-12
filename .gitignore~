@@ -1,3 +1,4 @@
 # Ignorer le fichier de connexion à la bdd (propre à chaque install)
-include/constants.php
-fichiers/*
+application/config/constants.php
+application/config/database.php
+/nbproject/private/
